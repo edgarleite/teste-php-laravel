@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('name', 20);
+            $table->string('name', 150)->unique()->index(); // Prefiro definir um tamanho maior, afim de evitar truncar no insert. Também deixar como único para evitar duplicidades. Indexar para melhoria de performance em busca.
+            $table->timestamps(); // Prefiro deixar os timestamp no fim da tabela.
         });
     }
 
